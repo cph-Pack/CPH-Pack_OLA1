@@ -13,5 +13,22 @@ namespace Unit_Test_Ola_1
 
             Assert.Equal("kk!", h);
         }
+
+        [Fact]
+        public void SuccessTest()
+        {
+            Assert.Equal(4, Add(2, 2));
+        }
+
+        [Fact]
+        public void FailTest()
+        {
+            Assert.NotEqual(5, Add(2, 2));
+        }
+
+        int Add(int x, int y)
+        {
+            return x + y;
+        }
     }
 }
