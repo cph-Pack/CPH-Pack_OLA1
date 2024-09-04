@@ -10,7 +10,7 @@ namespace CPH_Pack_OLA1
     {
         public string writeHellow()
         {
-            return "kk";
+            return "k";
         }
 
     }
