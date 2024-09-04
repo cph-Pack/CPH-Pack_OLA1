@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPH-Pack_OLA1", "CPH-Pack_OLA1\CPH-Pack_OLA1.csproj", "{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit_Test_Ola_1", "Unit_Test_Ola_1\Unit_Test_Ola_1.csproj", "{C9F1914B-A466-456A-838E-232BB6C789CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5} = {B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9F1914B-A466-456A-838E-232BB6C789CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F1914B-A466-456A-838E-232BB6C789CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F1914B-A466-456A-838E-232BB6C789CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F1914B-A466-456A-838E-232BB6C789CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A0A32ED-9FD1-40E6-98DD-AF31F4EAC974}
+	EndGlobalSection
+EndGlobal
