@@ -11,7 +11,7 @@ namespace Unit_Test_Ola_1
             Hellow program = new Hellow();
             string h = program.writeHellow();
 
-            Assert.Equal("kk", h);
+            Assert.Equal("kk!", h);
         }
     }
 }
