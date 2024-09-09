@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CPH_Pack_OLA1
 {
-    class TaskClass
+    public class TaskClass
     {
         String TaskName;
         String TaskValue;
