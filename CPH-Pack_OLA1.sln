@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CPH-Pack_OLA1", "CPH-Pack_OLA1\CPH-Pack_OLA1.csproj", "{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CPH-Pack_OLA1", "CPH-Pack_OLA1\CPH-Pack_OLA1.csproj", "{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit_Test_Ola_1", "Unit_Test_Ola_1\Unit_Test_Ola_1.csproj", "{C9F1914B-A466-456A-838E-232BB6C789CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit_Test_Ola_1", "Unit_Test_Ola_1\Unit_Test_Ola_1.csproj", "{C9F1914B-A466-456A-838E-232BB6C789CA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5} = {B9260C0D-B338-4C3B-A0DD-A18DBAC59AB5}
 	EndProjectSection
