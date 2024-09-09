@@ -80,7 +80,7 @@ namespace CPH_Pack_OLA1
                     }
                     try
                     {
-                        TaskGroups[GroupName].Add(new TaskClass(TName, TValue));
+                        TaskGroups[GroupName].Add(new TaskClass(TName, TValue, new DateOnly(2024, 9, 9), false));
                     }
                     catch
                     {
