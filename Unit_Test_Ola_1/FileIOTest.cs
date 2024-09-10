@@ -13,9 +13,9 @@ namespace Unit_Test_Ola_1
         public void WriteFile_ValidTask_WritesTaskToFile()
         {
             // Arrange
-            var expected = new List<TestTask>
+            var expected = new List<TaskClass>
         {
-            new TestTask {
+            new TaskClass {
                 TaskName = "Test",
                 TaskValue = "Test",
                 Deadline = new DateOnly(),
