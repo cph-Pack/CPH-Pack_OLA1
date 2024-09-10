@@ -60,7 +60,6 @@ namespace CPH_Pack_OLA1
                 task.SetValue(newValue);
                 task.SetDeadline(newDeadline);
                 task.SetIsCompleted(isCompleted);
-                SaveTasks();
                 Console.WriteLine($"Task '{name}' updated.");
             }
             else
@@ -85,9 +84,17 @@ namespace CPH_Pack_OLA1
                 Console.WriteLine($"Task with name '{name}' not found.");
             }
 
-            void SaveTasks()
+        }
+
+        private void SaveTasks()
+        {
+            try
             {
                 fileIO.Write_File(tasks);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving tasks: {ex.Message}");
             }
 
         }
