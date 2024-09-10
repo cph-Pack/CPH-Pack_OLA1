@@ -16,7 +16,7 @@ namespace CPH_Pack_OLA1
 
         public FileIO()
         {
-            this.docPath = System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt";
+            docPath = System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt";
         }
 
         private void Create_File_With_Data()
@@ -91,7 +91,7 @@ namespace CPH_Pack_OLA1
             return null;
         }
 
-        public void Write_File(List<TestTask> tasks)
+        public void Write_File(List<TaskClass> tasks)
         {
 
             // prepare options, convert array to json string and write to file
@@ -102,10 +102,10 @@ namespace CPH_Pack_OLA1
         }
 
         // will be deleted but this was the old method
-        public void Write_File_Old(TestTask task)
+        public void Write_File_Old(TaskClass task)
         {
             // read content
-            List<TestTask> tasks = Read_File();
+            List<TaskClass> tasks = Read_File();
 
             // add new task
             tasks.Add(task);
