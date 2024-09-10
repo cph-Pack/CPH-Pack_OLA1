@@ -59,6 +59,7 @@ namespace Unit_Test_Ola_1
             string taskValue = "Old Value";
             DateOnly deadline = DateOnly.FromDateTime(DateTime.Now.AddDays(3));
             bool isCompleted = false;
+            string newCategory = "default";
 
             manager.CreateTask(taskName, taskValue, deadline, isCompleted);
 
@@ -66,7 +67,7 @@ namespace Unit_Test_Ola_1
             DateOnly newDeadline = DateOnly.FromDateTime(DateTime.Now.AddDays(10));
 
             // Act
-            manager.UpdateTask(taskName, newValue, newDeadline, true);
+            manager.UpdateTask(taskName, newValue, newDeadline, true, newCategory);
             var updatedTask = manager.GetTask(taskName);
 
             // Assert
@@ -135,8 +136,8 @@ namespace Unit_Test_Ola_1
             {
                 TaskName = "A Test Task",
                 TaskValue = "Test",
-                Category = "Default Category", 
-                Deadline = new DateOnly(),
+                Category = "Default Category",
+                Deadline = DateOnly.FromDateTime(DateTime.Now.AddDays(7)),
                 IsCompleted = false,
             };
             manager.CreateTask(expected.TaskName, expected.TaskValue, expected.Deadline, expected.IsCompleted);
@@ -148,6 +149,24 @@ namespace Unit_Test_Ola_1
             Assert.Equal(expected.Category, actual.Category);
             Assert.Equal(expected.Deadline, actual.Deadline);
             Assert.Equal(expected.IsCompleted, actual.IsCompleted);
+        }
+
+        [Fact]
+        public void CreateTask_WithPastDeadline()
+        {
+            // Arrange
+            var manager = new TaskManager();
+            string taskName = "Test Task";
+            string taskValue = "Test Value";
+            DateOnly pastDeadline = DateOnly.FromDateTime(DateTime.Now.AddDays(-1)); // Deadline in the past
+            bool isCompleted = false;
+            string category = "Work";
+
+            // Act & Assert
+            var ex = Assert.Throws<ArgumentException>(() =>
+                manager.CreateTask(taskName, taskValue, pastDeadline, isCompleted, category));
+
+            Assert.Equal("Deadline must be a future date", ex.Message);
         }
     }
 }

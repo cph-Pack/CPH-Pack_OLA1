@@ -24,6 +24,10 @@ namespace CPH_Pack_OLA1
         // Create a new task
         public void CreateTask(string name, string value, DateOnly deadline, bool isCompleted, string? category = null)
         {
+            if (deadline <= DateOnly.FromDateTime(DateTime.Now))
+            {
+                throw new ArgumentException("Deadline must be a future date");
+            }
             //var task = new TaskClass(name, value, deadline, isCompleted);
             string taskCategory = string.IsNullOrWhiteSpace(category) ? "Default Category" : category;
             var task = new TaskClass()
