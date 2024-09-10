@@ -25,19 +25,17 @@ namespace CPH_Pack_OLA1
             {
                 TaskName = "Writing unit tests",
                 TaskValue = "100",
-                Category = "",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
-                category = "Default Category"
+                Category = "Default Category"
             };
             var testTask2 = new TaskClass()
             {
                 TaskName = "Compiling code",
                 TaskValue = "100",
-                Category = "",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
-                category = "Default Category"
+                Category = "Default Category"
             };
             List<TaskClass> tasks = new List<TaskClass>();
             tasks.Add(testTask);

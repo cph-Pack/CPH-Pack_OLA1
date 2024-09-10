@@ -110,7 +110,7 @@ namespace CPH_Pack_OLA1
                 {
                     Console.WriteLine("Enter task to complete");
                     TaskClass t = taskManager.GetTask(Console.ReadLine());
-                    taskManager.UpdateTask(t.TaskName, t.TaskValue, t.Deadline, true, t.category);
+                    taskManager.UpdateTask(t.TaskName, t.TaskValue, t.Deadline, true, t.Category);
                     State = 0;
                 }
 
