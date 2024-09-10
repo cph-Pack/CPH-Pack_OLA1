@@ -46,7 +46,13 @@ namespace Unit_Test_Ola_1
         [Fact]
         public void CreatesFile_WithData_IfMissing()
         {
-
+            var fileIO = new FileIO();
+            if (File.Exists(System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt"))
+            {
+                File.Delete(System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt");
+            }
+            var actual = fileIO.Read_File();
+            Assert.NotEmpty(actual);
         }
     }
 }
