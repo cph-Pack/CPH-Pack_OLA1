@@ -63,10 +63,15 @@ The testing will be made with:
 - **Stryker** for mutation testing
 
 # Reflection and Discussion
-## Verification vs. Validation
+## 6. Verification vs. Validation
 Verification is about what we as developers want to accomplish with the applications specification requirements during development. To follow these specifications, Code reviews would be a great way of keeping up the quality of the code.
 
 Validation isn’t about how we got to where we should be, but about what we have developed and everything within the system is working as expected. This is done at the end of the module or application and makes sure that the stakeholder is handed the product they expect to have delivered. The tests associated within validation are typically high level tests such as regression test, user testing, performance testing etc.
+
+In our tests, we use verification in the sense that we return the expected task. It also makes sure that an exception is thrown if a task doesn’t exist, this is an example of verifying the internal functionality and logic within the code, therefore it’s verification as we’re testing specification requirements. By using a mock, we can create a test double that is predefined and makes sure the parameters behave as we expect. 
+
+By making sure our deadline is only available in the future, we can secure that we use validation within our tests
+This makes sure that if we were to input a date in the past, we would be thrown an exception. Now we can construct our test that we expect to throw an exception, because the deadline will be in the past and assert that the error message will be the same as we put in our TaskManager class.
 
 ## Software Quality Reflection
 
