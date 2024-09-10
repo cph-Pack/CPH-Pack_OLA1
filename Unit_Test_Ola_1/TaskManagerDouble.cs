@@ -9,6 +9,7 @@ namespace Unit_Test_Ola_1
 {
     public interface ITaskService
     {
+        //Simpelt interface der definerer metoden GetTaskByName som returnere vores task baseret på dens navn.
         TaskClass GetTaskByName(string name);
     }
 
@@ -20,7 +21,7 @@ namespace Unit_Test_Ola_1
         {
             _taskService = taskService;
         }
-
+        //Henter en Task
         public TaskClass GetTask(string name)
         {
             var task = _taskService.GetTaskByName(name);
