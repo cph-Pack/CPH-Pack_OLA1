@@ -24,7 +24,15 @@ namespace CPH_Pack_OLA1
         // Create a new task
         public void CreateTask(string name, string value, DateOnly deadline, bool isCompleted)
         {
-            var task = new TaskClass(name, value, deadline, isCompleted);
+            //var task = new TaskClass(name, value, deadline, isCompleted);
+            var task = new TaskClass()
+            {
+                TaskName = name,
+                TaskValue = value,
+                Deadline = deadline,
+                IsCompleted = isCompleted
+
+            };
             tasks.Add(task);
             SaveTasks();
             Console.WriteLine($"Task '{name}' created.");
@@ -33,10 +41,10 @@ namespace CPH_Pack_OLA1
         // Read a specific task by name
         public TaskClass GetTask(string name)
         {
-            var task = tasks.FirstOrDefault(t => t.GetTaskName() == name);
+            var task = tasks.FirstOrDefault(t => t.TaskName == name);
             if (task != null)
             {
-                Console.WriteLine($"Task found: {task.GetTaskName()} - {task.GetTaskValue()} - Deadline: {task.GetDeadline()} - Completed: {task.GetCompleted()}");
+                Console.WriteLine($"Task found: {task.TaskName} - {task.TaskValue} - Deadline: {task.Deadline} - Completed: {task.IsCompleted}");
             }
             else
             {
@@ -54,12 +62,12 @@ namespace CPH_Pack_OLA1
         // Update an existing task by name
         public List<TaskClass> UpdateTask(string name, string newValue, DateOnly newDeadline, bool isCompleted)
         {
-            var task = tasks.FirstOrDefault(t => t.GetTaskName() == name);
+            var task = tasks.FirstOrDefault(t => t.TaskName == name);
             if (task != null)
             {
-                task.SetValue(newValue);
-                task.SetDeadline(newDeadline);
-                task.SetIsCompleted(isCompleted);
+                task.TaskValue = newValue;
+                task.Deadline = newDeadline;
+                task.IsCompleted = isCompleted;
                 Console.WriteLine($"Task '{name}' updated.");
             }
             else
@@ -72,7 +80,7 @@ namespace CPH_Pack_OLA1
         // Delete a task by name
         public void DeleteTask(string name)
         {
-            var task = tasks.FirstOrDefault(t => t.GetTaskName() == name);
+            var task = tasks.FirstOrDefault(t => t.TaskName == name);
             if (task != null)
             {
                 tasks.Remove(task);

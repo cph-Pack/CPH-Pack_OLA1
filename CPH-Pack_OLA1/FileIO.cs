@@ -16,26 +16,26 @@ namespace CPH_Pack_OLA1
 
         public FileIO()
         {
-            docPath = System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt";
+            this.docPath = System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt";
         }
 
         private void Create_File_With_Data()
         {
-            var testTask = new TestTask()
+            var testTask = new TaskClass()
             {
                 TaskName = "Writing unit tests",
                 TaskValue = "100",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
             };
-            var testTask2 = new TestTask()
+            var testTask2 = new TaskClass()
             {
                 TaskName = "Compiling code",
                 TaskValue = "100",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
             };
-            List<TestTask> tasks = new List<TestTask>();
+            List<TaskClass> tasks = new List<TaskClass>();
             tasks.Add(testTask);
             tasks.Add(testTask2);
             var options = new JsonSerializerOptions { WriteIndented = true };
@@ -66,7 +66,7 @@ namespace CPH_Pack_OLA1
         }
 
 
-        public List<TestTask> Read_File()
+        public List<TaskClass> Read_File()
         {
             try
             {
@@ -78,7 +78,7 @@ namespace CPH_Pack_OLA1
 
                     // Read the stream as a string and deserialize content to a list
                     string fileContent = reader.ReadToEnd();
-                    List<TestTask> tasks = JsonSerializer.Deserialize<List<TestTask>>(fileContent);
+                    List<TaskClass> tasks = JsonSerializer.Deserialize<List<TaskClass>>(fileContent);
                 
                     // return the list to the caller.
                     return tasks;
