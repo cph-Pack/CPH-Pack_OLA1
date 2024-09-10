@@ -18,13 +18,13 @@ namespace CPH_Pack_OLA1
 
             var testTask = new TestTask()
             {
-                TaskName = "Tester imens i kigger med",
-                TaskValue = "100",
+                TaskName = "Der blev i den grad testet",
+                TaskValue = "1500",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
             };
 
-            List<TestTask> tasks = fileIO.Read_File();
+            List<TaskClass> tasks = fileIO.Read_File();
             fileIO.Write_File(tasks);
 
             //TaskGroups.Add("Default Group", new List<TaskClass>());

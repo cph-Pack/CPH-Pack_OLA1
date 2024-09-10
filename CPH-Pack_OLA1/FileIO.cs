@@ -16,10 +16,10 @@ namespace CPH_Pack_OLA1
 
         public FileIO()
         {
-            this.docPath = System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt";
+            docPath = System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt";
         }
 
-        public List<TestTask> Read_File()
+        public List<TaskClass> Read_File()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace CPH_Pack_OLA1
 
                 // Read the stream as a string and deserialize content to a list
                 string fileContent = reader.ReadToEnd();
-                List<TestTask> tasks = JsonSerializer.Deserialize<List<TestTask>>(fileContent);
+                List<TaskClass> tasks = JsonSerializer.Deserialize<List<TaskClass>>(fileContent);
 
                 // return the list to the caller.
                 return tasks;
@@ -41,7 +41,7 @@ namespace CPH_Pack_OLA1
             return null;
         }
 
-        public void Write_File(List<TestTask> tasks)
+        public void Write_File(List<TaskClass> tasks)
         {
 
             // prepare options, convert array to json string and write to file
@@ -52,10 +52,10 @@ namespace CPH_Pack_OLA1
         }
 
         // will be deleted but this was the old method
-        public void Write_File_Old(TestTask task)
+        public void Write_File_Old(TaskClass task)
         {
             // read content
-            List<TestTask> tasks = Read_File();
+            List<TaskClass> tasks = Read_File();
 
             // add new task
             tasks.Add(task);
