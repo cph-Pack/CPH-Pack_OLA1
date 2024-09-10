@@ -28,14 +28,15 @@ namespace CPH_Pack_OLA1
             string taskCategory = string.IsNullOrWhiteSpace(category) ? "Default Category" : category;
 
             //var task = new TaskClass(name, value, deadline, isCompleted);
+            string taskCategory = string.IsNullOrWhiteSpace(category) ? "Default Category" : category;
             var task = new TaskClass()
             {
                 TaskName = name,
                 TaskValue = value,
                 Category = taskCategory,
                 Deadline = deadline,
-                IsCompleted = isCompleted
-
+                IsCompleted = isCompleted,
+                category = taskCategory
             };
             tasks.Add(task);
             SaveTasks();
@@ -64,7 +65,7 @@ namespace CPH_Pack_OLA1
         }
 
         // Update an existing task by name
-        public List<TaskClass> UpdateTask(string name, string newValue, DateOnly newDeadline, bool isCompleted)
+        public List<TaskClass> UpdateTask(string name, string newValue, DateOnly newDeadline, bool isCompleted, string category)
         {
             var task = tasks.FirstOrDefault(t => t.TaskName == name);
             if (task != null)
@@ -72,6 +73,7 @@ namespace CPH_Pack_OLA1
                 task.TaskValue = newValue;
                 task.Deadline = newDeadline;
                 task.IsCompleted = isCompleted;
+                task.category = category;
                 Console.WriteLine($"Task '{name}' updated.");
             }
             else

@@ -15,8 +15,122 @@ namespace CPH_Pack_OLA1
         {
 
             FileIO fileIO = new FileIO();
+            TaskManager taskManager = new TaskManager();
+            int State = 0;
+            while (running)
+            {
+                if(State == 0)
+                {
+                    Console.WriteLine("Welcome to task manager");
 
-            //TaskGroups.Add("Default Group", new List<TaskClass>());
+                    Console.WriteLine("\t1 - add task");
+                    Console.WriteLine("\t2 - update task");
+                    Console.WriteLine("\t3 - delete task");
+                    Console.WriteLine("\t4 - mark task as completed");
+                    Console.WriteLine("\t5 - show all tasks");
+
+                    Console.WriteLine("\t99 - Exit program");
+
+
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            State = 1; break;
+                        case "2":
+                            State = 2; break;
+                        case "3":
+                            State = 3; break;
+                        case "4":
+                            State = 4; break;
+                        case "5":
+                            State = 5; break;
+
+                        case "99":
+                            State = 99;
+                            break;
+                    }
+                }
+
+                if(State == 1)
+                {
+                    Console.WriteLine("Enter Name");
+                    string tName = Console.ReadLine();
+                    Console.WriteLine("Enter value");
+                    string tValue = Console.ReadLine();
+                    Console.WriteLine("Enter Deadline (year, month, day)");
+                    DateOnly tDate = new DateOnly();
+                    try
+                    {
+                        tDate = DateOnly.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Not a valid Date");
+                        State = 0;
+                    }
+                    Console.WriteLine("Enter task group leave blank for default");
+                    string tGroup = Console.ReadLine();
+                    taskManager.CreateTask(tName, tValue, tDate, false, tGroup);
+                    State = 0;
+                }
+
+                if(State == 2)
+                {
+                    Console.WriteLine("Enter task name");
+                    TaskClass t = taskManager.GetTask(Console.ReadLine());
+
+                    Console.WriteLine("Enter new Name");
+                    string tName = Console.ReadLine();
+                    Console.WriteLine("Enter new value");
+                    string tValue = Console.ReadLine();
+                    Console.WriteLine("Enter new Deadline (year, month, day)");
+                    DateOnly tDate = new DateOnly();
+                    try
+                    {
+                        tDate = DateOnly.Parse(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Not a valid Date");
+                    }
+                    Console.WriteLine("Enter new category");
+                    string tCategory = Console.ReadLine();
+                    taskManager.UpdateTask(tName, tValue, tDate, t.IsCompleted, tCategory);
+                    State = 0;
+                }
+
+                if(State == 3)
+                {
+                    Console.WriteLine("Enter task to delete");
+                    taskManager.DeleteTask(Console.ReadLine());
+                    State = 0;
+                }
+
+                if(State == 4)
+                {
+                    Console.WriteLine("Enter task to complete");
+                    TaskClass t = taskManager.GetTask(Console.ReadLine());
+                    taskManager.UpdateTask(t.TaskName, t.TaskValue, t.Deadline, true, t.category);
+                    State = 0;
+                }
+
+                if(State == 5)
+                {
+                    List<TaskClass> tList = taskManager.GetAllTasks();
+                    foreach (TaskClass t in tList)
+                    {
+                        taskManager.GetTask(t.TaskName);
+                    }
+                    State = 0;
+                }
+
+                if(State == 99)
+                {
+                    running = false;
+                }
+            }
+
+            /*TaskGroups.Add("Default Group", new List<TaskClass>());
             //int State = 0;
             //while (running)
             //{
@@ -188,7 +302,7 @@ namespace CPH_Pack_OLA1
             //    {
             //        running = false;
             //    }
-            //}
+            }*/
         }
     }
 }

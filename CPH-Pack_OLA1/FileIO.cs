@@ -28,6 +28,7 @@ namespace CPH_Pack_OLA1
                 Category = "",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
+                category = "Default Category"
             };
             var testTask2 = new TaskClass()
             {
@@ -36,6 +37,7 @@ namespace CPH_Pack_OLA1
                 Category = "",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
+                category = "Default Category"
             };
             List<TaskClass> tasks = new List<TaskClass>();
             tasks.Add(testTask);
