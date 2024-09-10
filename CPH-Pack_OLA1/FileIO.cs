@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace CPH_Pack_OLA1
 {
-    class FileIO
+    public class FileIO
     {
         string docPath;
 
@@ -19,24 +19,74 @@ namespace CPH_Pack_OLA1
             this.docPath = System.IO.Directory.GetCurrentDirectory() + "\\testfile.txt";
         }
 
-        public List<TestTask> Read_File()
+        private void Create_File_With_Data()
+        {
+            var testTask = new TestTask()
+            {
+                TaskName = "Writing unit tests",
+                TaskValue = "100",
+                Deadline = new DateOnly(),
+                IsCompleted = false,
+            };
+            var testTask2 = new TestTask()
+            {
+                TaskName = "Compiling code",
+                TaskValue = "100",
+                Deadline = new DateOnly(),
+                IsCompleted = false,
+            };
+            List<TestTask> tasks = new List<TestTask>();
+            tasks.Add(testTask);
+            tasks.Add(testTask2);
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            var jsonString = JsonSerializer.Serialize(tasks, options);
+            File.WriteAllText(this.docPath, jsonString);
+        }
+
+        private bool File_exists()
         {
             try
             {
                 // Open the text file using a stream reader.
                 using StreamReader reader = new(this.docPath);
-
-                // Read the stream as a string and deserialize content to a list
                 string fileContent = reader.ReadToEnd();
-                List<TestTask> tasks = JsonSerializer.Deserialize<List<TestTask>>(fileContent);
-
-                // return the list to the caller.
-                return tasks;
+                if (fileContent == "")
+                {
+                    reader.Close();
+                    Create_File_With_Data();
+                    
+                }
+                return true;
             }
             catch (IOException e)
             {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+                Create_File_With_Data();
+            }
+            return true;
+        }
+
+
+        public List<TestTask> Read_File()
+        {
+            try
+            {
+                
+                if (File_exists() == true)
+                {
+                    // Open the text file using a stream reader.
+                    using StreamReader reader = new(this.docPath);
+
+                    // Read the stream as a string and deserialize content to a list
+                    string fileContent = reader.ReadToEnd();
+                    List<TestTask> tasks = JsonSerializer.Deserialize<List<TestTask>>(fileContent);
+                
+                    // return the list to the caller.
+                    return tasks;
+                }
+            }
+            catch (IOException e)
+            {
+                throw new FileNotFoundException("Incorrect file path");
             }
             return null;
         }

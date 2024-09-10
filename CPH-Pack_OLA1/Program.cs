@@ -16,17 +16,6 @@ namespace CPH_Pack_OLA1
 
             FileIO fileIO = new FileIO();
 
-            var testTask = new TestTask()
-            {
-                TaskName = "Tester imens i kigger med",
-                TaskValue = "100",
-                Deadline = new DateOnly(),
-                IsCompleted = false,
-            };
-
-            List<TestTask> tasks = fileIO.Read_File();
-            fileIO.Write_File(tasks);
-
             //TaskGroups.Add("Default Group", new List<TaskClass>());
             //int State = 0;
             //while (running)
