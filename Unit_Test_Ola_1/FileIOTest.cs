@@ -23,6 +23,7 @@ namespace Unit_Test_Ola_1
                 new TaskClass {
                     TaskName = "Test",
                     TaskValue = "Test",
+                    Category = "",
                     Deadline = new DateOnly(),
                     IsCompleted = false,
                 }

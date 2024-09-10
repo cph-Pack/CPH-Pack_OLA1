@@ -25,6 +25,7 @@ namespace CPH_Pack_OLA1
             {
                 TaskName = "Writing unit tests",
                 TaskValue = "100",
+                Category = "",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
             };
@@ -32,6 +33,7 @@ namespace CPH_Pack_OLA1
             {
                 TaskName = "Compiling code",
                 TaskValue = "100",
+                Category = "",
                 Deadline = new DateOnly(),
                 IsCompleted = false,
             };

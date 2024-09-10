@@ -19,6 +19,7 @@ namespace Unit_Test_Ola_1
             { 
                 TaskName = "Task 1",
                 TaskValue = "Some Value",
+                Category = "",
                 Deadline = new DateOnly(2024, 9, 10),
                 IsCompleted = false,
             };
@@ -52,6 +53,33 @@ namespace Unit_Test_Ola_1
 
             // Act & Assert
             Assert.Throws<ArgumentException>(() => taskManager.GetTask("NonExistingTask"));
+        }
+
+        // This is the specification-based task
+        [Fact]
+        public void CreateTask_ValidTaskWithoutCategoryWithDeadline_AddsTask()
+        {
+            // Arrange
+            var manager = new TaskManager();
+
+            // Act
+            var expected = new TaskClass
+            {
+                TaskName = "A Test Task",
+                TaskValue = "Test",
+                Category = "Default Category", 
+                Deadline = new DateOnly(),
+                IsCompleted = false,
+            };
+            manager.CreateTask(expected.TaskName, expected.TaskValue, expected.Deadline, expected.IsCompleted);
+            var actual = manager.GetTask(expected.TaskName);
+
+            // Assert
+            Assert.Equal(expected.TaskName, actual.TaskName);
+            Assert.Equal(expected.TaskValue, actual.TaskValue);
+            Assert.Equal(expected.Category, actual.Category);
+            Assert.Equal(expected.Deadline, actual.Deadline);
+            Assert.Equal(expected.IsCompleted, actual.IsCompleted);
         }
     }
 }

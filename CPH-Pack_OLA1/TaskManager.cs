@@ -22,13 +22,17 @@ namespace CPH_Pack_OLA1
         }
 
         // Create a new task
-        public void CreateTask(string name, string value, DateOnly deadline, bool isCompleted)
+        public void CreateTask(string name, string value, DateOnly deadline, bool isCompleted, string? category = null)
         {
+
+            string taskCategory = string.IsNullOrWhiteSpace(category) ? "Default Category" : category;
+
             //var task = new TaskClass(name, value, deadline, isCompleted);
             var task = new TaskClass()
             {
                 TaskName = name,
                 TaskValue = value,
+                Category = taskCategory,
                 Deadline = deadline,
                 IsCompleted = isCompleted
 
@@ -44,7 +48,7 @@ namespace CPH_Pack_OLA1
             var task = tasks.FirstOrDefault(t => t.TaskName == name);
             if (task != null)
             {
-                Console.WriteLine($"Task found: {task.TaskName} - {task.TaskValue} - Deadline: {task.Deadline} - Completed: {task.IsCompleted}");
+                Console.WriteLine($"Task found: {task.TaskName} - {task.TaskValue} - Category: {task.Category} - Deadline: {task.Deadline} - Completed: {task.IsCompleted}");
             }
             else
             {
