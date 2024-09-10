@@ -17,7 +17,7 @@ namespace Unit_Test_Ola_1
             var mockTaskService = new Mock<ITaskService>();
             var task = new TaskClass("Task 1", "Some Value", new DateOnly(2024, 9, 10), false);
 
-            // Setup mock behavior
+            // Setup of mock behavior
             mockTaskService.Setup(service => service.GetTaskByName("Task 1"))
                 .Returns(task);
 
@@ -33,12 +33,12 @@ namespace Unit_Test_Ola_1
         }
 
         [Fact]
-        public void GetTask_TaskDoesNotExist_ThrowsException()
+        public void GetTask_TaskDoesNotExist()
         {
             // Arrange
             var mockTaskService = new Mock<ITaskService>();
 
-            // Setup mock behavior to return null for any task that doesn't exist
+            // Setup of mock behavior to return null tasks that doesn't exist
             mockTaskService.Setup(service => service.GetTaskByName(It.IsAny<string>()))
                 .Returns((TaskClass)null);
 
