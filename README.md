@@ -63,7 +63,7 @@ The testing will be made with:
 - **Stryker** for mutation testing
 
 # Reflection and Discussion
-## 6. Verification vs. Validation
+## Verification vs. Validation
 Verification is about what we as developers want to accomplish with the applications specification requirements during development. To follow these specifications, Code reviews would be a great way of keeping up the quality of the code.
 
 Validation isn’t about how we got to where we should be, but about what we have developed and everything within the system is working as expected. This is done at the end of the module or application and makes sure that the stakeholder is handed the product they expect to have delivered. The tests associated within validation are typically high level tests such as regression test, user testing, performance testing etc.
