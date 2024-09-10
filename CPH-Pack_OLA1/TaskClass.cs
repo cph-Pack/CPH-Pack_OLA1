@@ -10,6 +10,7 @@ namespace CPH_Pack_OLA1
     {
         public required String TaskName { get; set; }
         public required String TaskValue { get; set; }
+        public required string category { get; set; }
         public DateOnly Deadline { get; set; } = new DateOnly();
         public Boolean IsCompleted { get; set; } = false;
         //public String TaskName;

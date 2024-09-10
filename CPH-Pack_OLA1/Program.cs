@@ -68,7 +68,9 @@ namespace CPH_Pack_OLA1
                         Console.WriteLine("Not a valid Date");
                         State = 0;
                     }
-                    taskManager.CreateTask(tName, tValue, tDate, false);
+                    Console.WriteLine("Enter task group leave blank for default");
+                    string tGroup = Console.ReadLine();
+                    taskManager.CreateTask(tName, tValue, tDate, false, tGroup);
                     State = 0;
                 }
 
@@ -91,7 +93,9 @@ namespace CPH_Pack_OLA1
                     {
                         Console.WriteLine("Not a valid Date");
                     }
-                    taskManager.UpdateTask(tName, tValue, tDate, t.IsCompleted);
+                    Console.WriteLine("Enter new category");
+                    string tCategory = Console.ReadLine();
+                    taskManager.UpdateTask(tName, tValue, tDate, t.IsCompleted, tCategory);
                     State = 0;
                 }
 
@@ -106,7 +110,7 @@ namespace CPH_Pack_OLA1
                 {
                     Console.WriteLine("Enter task to complete");
                     TaskClass t = taskManager.GetTask(Console.ReadLine());
-                    taskManager.UpdateTask(t.TaskName, t.TaskValue, t.Deadline, true);
+                    taskManager.UpdateTask(t.TaskName, t.TaskValue, t.Deadline, true, t.category);
                     State = 0;
                 }
 
