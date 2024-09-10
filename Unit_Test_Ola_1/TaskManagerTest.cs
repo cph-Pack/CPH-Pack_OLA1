@@ -10,6 +10,73 @@ namespace Unit_Test_Ola_1
 {
     public class TaskManagerTests
     {
+
+        [Fact]
+        public void CreateTask_ValidTask_AddsTask()
+        {
+            // Arrange
+            var manager = new TaskManager();
+
+            string taskName = "Test Task";
+            string taskValue = "Test Value";
+            DateOnly deadline = DateOnly.FromDateTime(DateTime.Now.AddDays(7));
+            bool isCompleted = false;
+            string category = "Work";
+
+            // Act
+            manager.CreateTask(taskName, taskValue, deadline, isCompleted, category);
+            var task = manager.GetTask(taskName);
+
+            // Assert
+            Assert.NotNull(task);
+            Assert.Equal(taskName, task.TaskName);
+            Assert.Equal(taskValue, task.TaskValue);
+            Assert.Equal(deadline, task.Deadline);
+            Assert.Equal(isCompleted, task.IsCompleted);
+            Assert.Equal(category, task.Category);
+        }
+
+        [Fact]
+        public void GetTask_InvalidTask_ReturnsNull()
+        {
+            // Arrange 
+            var manager = new TaskManager();
+
+            // Act
+            var result = manager.GetTask("NonExistentTask");
+
+            // Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void UpdateTask_ValidTask_ReturnsModifiedTask()
+        {
+            // Arrange
+            var manager = new TaskManager();
+
+            string taskName = "Old Task";
+            string taskValue = "Old Value";
+            DateOnly deadline = DateOnly.FromDateTime(DateTime.Now.AddDays(3));
+            bool isCompleted = false;
+
+            manager.CreateTask(taskName, taskValue, deadline, isCompleted);
+
+            string newValue = "New Value";
+            DateOnly newDeadline = DateOnly.FromDateTime(DateTime.Now.AddDays(10));
+
+            // Act
+            manager.UpdateTask(taskName, newValue, newDeadline, true);
+            var updatedTask = manager.GetTask(taskName);
+
+            // Assert
+            Assert.NotNull(updatedTask);
+            Assert.Equal(newValue, updatedTask.TaskValue);
+            Assert.Equal(newDeadline, updatedTask.Deadline);
+            Assert.True(updatedTask.IsCompleted);
+        }
+
+        // Using Test Doubles
         [Fact]
         public void GetTask_TaskExists_ReturnsTask()
         {
@@ -39,6 +106,7 @@ namespace Unit_Test_Ola_1
             Assert.Equal("Some Value", result.TaskValue);
         }
 
+        // Using Test Doubles
         [Fact]
         public void GetTask_TaskDoesNotExist()
         {
