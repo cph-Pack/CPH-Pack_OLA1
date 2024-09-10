@@ -15,7 +15,13 @@ namespace Unit_Test_Ola_1
         {
             // Arrange
             var mockTaskService = new Mock<ITaskService>();
-            var task = new TaskClass("Task 1", "Some Value", new DateOnly(2024, 9, 10), false);
+            var task = new TaskClass()
+            { 
+                TaskName = "Task 1",
+                TaskValue = "Some Value",
+                Deadline = new DateOnly(2024, 9, 10),
+                IsCompleted = false,
+            };
 
             // Setup of mock behavior
             mockTaskService.Setup(service => service.GetTaskByName("Task 1"))
@@ -28,8 +34,8 @@ namespace Unit_Test_Ola_1
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal("Task 1", result.GetTaskName());
-            Assert.Equal("Some Value", result.GetTaskValue());
+            Assert.Equal("Task 1", result.TaskName);
+            Assert.Equal("Some Value", result.TaskName);
         }
 
         [Fact]
