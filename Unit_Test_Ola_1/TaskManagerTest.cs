@@ -35,7 +35,7 @@ namespace Unit_Test_Ola_1
             // Assert
             Assert.NotNull(result);
             Assert.Equal("Task 1", result.TaskName);
-            Assert.Equal("Some Value", result.TaskName);
+            Assert.Equal("Some Value", result.TaskValue);
         }
 
         [Fact]
