@@ -70,6 +70,16 @@ Validation isn’t about how we got to where we should be, but about what we hav
 
 ## Software Quality Reflection
 
+Peter Morlion covers internal and external software quality. This project is mainly focused on the internal as we have no flashy GUI/website. We use the CLI to control the flow of the project in order to reduce the amount of frameworks and keep the complexity level as low as possible.
+
+We havent used any of the tools mentioned by Peter for measuring any metrics of our code. We are still at a low level as described in his article.
+
+"_If you’re starting with low-quality code, that’s fine. Set the minimum level so that your build only breaks if you drop below that low level. Then, start improving your code. Let the static code analysis tools show you where to start in your codebase. And as you improve the metrics, raise the bar by increasing that minimum level._" - Peter Morlion
+
+Making a cohesive project that would build, fulfill the task, complete its test requirements and dabbling with c# has taken a lot of effort from the testing aspect.
+
+We have however learned about the importance of setting ourselves up for success with a proper plan ahead of coding. Moving forward doing our footwork will be a higher priority so we can avoid the problems we encountered during this OLA.
+
 ## Discussion on Test Categories
 Martin Fowler describes several test categories on his website. 
 1. Broad Stack Tests, also known as End-to-End tests or full-stack tests, are tests that evaluate most of the parts of an application. The tests often simulate real-world usage across systems, and can be done by manipulating the UI with tools like fx. Selenium. They are often harder to maintain and slower to run than component tests.
