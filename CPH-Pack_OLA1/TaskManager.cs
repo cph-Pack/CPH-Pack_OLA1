@@ -1,0 +1,110 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CPH_Pack_OLA1
+{
+
+    public class TaskManager
+    {
+        private List<TaskClass> tasks;
+        private int nextId = 1;
+        private FileIO fileIO;
+
+        public TaskManager()
+        {
+            fileIO = new FileIO();
+            tasks = fileIO.Read_File() ?? new List<TaskClass>();
+            //tasks = new List<TaskClass>();
+        }
+
+        // Create a new task
+        public void CreateTask(string name, string value, DateOnly deadline, bool isCompleted)
+        {
+            //var task = new TaskClass(name, value, deadline, isCompleted);
+            var task = new TaskClass()
+            {
+                TaskName = name,
+                TaskValue = value,
+                Deadline = deadline,
+                IsCompleted = isCompleted
+
+            };
+            tasks.Add(task);
+            SaveTasks();
+            Console.WriteLine($"Task '{name}' created.");
+        }
+
+        // Read a specific task by name
+        public TaskClass GetTask(string name)
+        {
+            var task = tasks.FirstOrDefault(t => t.TaskName == name);
+            if (task != null)
+            {
+                Console.WriteLine($"Task found: {task.TaskName} - {task.TaskValue} - Deadline: {task.Deadline} - Completed: {task.IsCompleted}");
+            }
+            else
+            {
+                Console.WriteLine($"Task with name '{name}' not found.");
+            }
+            return task;
+        }
+
+        // Read all tasks
+        public List<TaskClass> GetAllTasks()
+        {
+            return tasks;
+        }
+
+        // Update an existing task by name
+        public List<TaskClass> UpdateTask(string name, string newValue, DateOnly newDeadline, bool isCompleted)
+        {
+            var task = tasks.FirstOrDefault(t => t.TaskName == name);
+            if (task != null)
+            {
+                task.TaskValue = newValue;
+                task.Deadline = newDeadline;
+                task.IsCompleted = isCompleted;
+                Console.WriteLine($"Task '{name}' updated.");
+            }
+            else
+            {
+                Console.WriteLine($"Task with name '{name}' not found.");
+            }
+            return tasks;
+        }
+
+        // Delete a task by name
+        public void DeleteTask(string name)
+        {
+            var task = tasks.FirstOrDefault(t => t.TaskName == name);
+            if (task != null)
+            {
+                tasks.Remove(task);
+                SaveTasks();
+                Console.WriteLine($"Task '{name}' deleted.");
+            }
+            else
+            {
+                Console.WriteLine($"Task with name '{name}' not found.");
+            }
+
+        }
+
+        private void SaveTasks()
+        {
+            try
+            {
+                fileIO.Write_File(tasks);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving tasks: {ex.Message}");
+            }
+
+        }
+    }
+}
